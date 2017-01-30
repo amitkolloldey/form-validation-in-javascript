@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Practice Template</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!---Some styling for the form--->
+    <style>
+
+        .form_wrapper {
+            border: 1px solid #5BC0DE;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .heading.text-center h2 {
+            margin: 0;
+        }
+        .heading.text-center {
+            background: #5CB85C;
+            padding: 15px;
+            color: #fff;
+        }
+        .heading.text-center p {
+            margin-bottom: 0;
+        } 
+        #message p {
+            font-weight: bold;
+            padding: 10px;
+        }
+        #message {
+            margin-top: 10px;
+        }
+
+    </style>
+    
+    <!--Javascript code for validation-->
+    <script>
+        function form_validation(){
+            var fname_input = document.getElementById("fname_input").value;
+            var lname_input = document.getElementById("lname_input").value;
+            var email_input = document.getElementById("email_input").value;
+            var pass_input = document.getElementById("pass_input").value;
+            var cpass_input = document.getElementById("cpass_input").value;
+            
+            
+            var message = document.getElementById("message"); 
+             
+            var atpos = email_input.indexOf("@");
+            var dotpos = email_input.lastIndexOf(".");  
+            if(fname_input == "" || lname_input == "" || email_input == "" || pass_input == "" || cpass_input == ""){
+                message.innerHTML = "<p class='bg-danger'>Please Fill All The Fields!!</p>";
+            }else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email_input.length) {
+                message.innerHTML = "<p class='bg-danger'>Please Enter A Valid Email Address!!!</p>";
+            }else if(pass_input != cpass_input){
+                message.innerHTML = "<p class='bg-danger'>Passwords Not Match!!</p>";
+            }else{
+                alert("Registration Successfull!!");
+                message.innerHTML = "<p class='bg-success'>Registration Successfull!!!!!</p>";
+                document.getElementById("form_signup").reset();
+            }
+        }
+    </script>
+</head>
+
+<body> 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-sm-offset-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="form_wrapper" id="form_wrapper">
+                    <div class="heading text-center">
+                        <h2>Sign Up Form</h2>
+                        <p>Simple Javascript Validation</p>
+                    </div>
+                    <div id="message"></div>
+                    <form onsubmit="return false" id="form_signup"> 
+                            <div class="form-group">
+                                <label for="fname_input">First Name</label>
+                                <input type="text" class="form-control" id="fname_input" placeholder="First Name..">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lname_input">Last Name</label>
+                                <input type="text" class="form-control" id="lname_input" placeholder="Last Name..">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email_input">Email address</label>
+                                <input type="email" class="form-control" id="email_input" placeholder="Email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pass_input">Password</label>
+                                <input type="password" class="form-control" id="pass_input" placeholder="Password">
+                            </div>
+                          
+                            <div class="form-group">
+                                <label for="cpass_input">Confirm Password</label>
+                                <input type="password" class="form-control" id="cpass_input" placeholder="Confirm Password">
+                            </div>
+                           
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" onclick="form_validation()" >Submit</button>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
+</html>
